@@ -1,0 +1,40 @@
+.main{
+  width: 86%;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  left: 7%;
+  top: 2%;
+}
+
+.leftArrow {
+  width: 30px;
+  top: 17%;
+  z-index: 1;
+  cursor: pointer;
+  filter: invert(100%) sepia(0%) saturate(3988%) hue-rotate(189deg) brightness(117%) contrast(101%);
+}
+
+.rightArrow {
+  width: 30px;
+  top: 17%;
+  cursor: pointer;
+  filter: invert(100%) sepia(0%) saturate(3988%) hue-rotate(189deg) brightness(117%) contrast(101%);
+}
+
+.elements {
+  border: 1px solid;
+  box-sizing: border-box;
+  margin-left: 0.3%;
+  font-size: 1.75rem;
+  background-color: #373e94;
+  color: white;
+  border-radius: 0.7rem;
+  width: 250px;
+  height: 150px;
+}
+
+.hide{
+  visibility: hidden;
+}

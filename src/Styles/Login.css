@@ -1,0 +1,70 @@
+html, body {
+  align-items: center;
+  background: #707af7;
+  border: 0;
+  display: flex;
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  height: 100%;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+}
+
+.login-form {
+  background: white;
+  color: #707af7;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.header {
+  text-align: center;
+}
+
+label {
+  display: flex;
+  flex-direction: column;
+}
+
+.required {
+  font-size: 0.825rem;
+  margin-top: 0.625rem;
+}
+
+.text {
+  font-size: 1rem;
+  border: 1px solid #707af7;
+  width: 15rem;
+  border-radius: .3rem;
+  margin-top: 0.25rem;
+  height: 2.25rem;
+  padding: 0.2rem;
+}
+.submit {
+  border: 0;
+  font-size: 0.75rem;
+  font-weight: bold;
+  margin-top: 0.625rem;
+  width: auto;
+  height: 2.25rem;
+  padding: 0.2rem;
+  background-color: #373e94;
+  color: white;
+  border-radius: 0.3rem;
+}
+.googleButton {
+  width: 100%;
+  justify-content: center;
+  margin-top: 3%;
+  font-size: 1.2rem !important;
+  border: 1px solid #707af7 !important;
+}
+
+.googleButton > div{
+  margin-right: 0 !important;
+}

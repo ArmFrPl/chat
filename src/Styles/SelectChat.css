@@ -1,0 +1,28 @@
+.cont{
+  width: 86%;
+  align-items: center;
+  margin: auto;
+  display: flex;
+  height: 500px;
+  justify-content: space-between;
+  flex-wrap: wrap;
+
+}
+
+.cards{
+  width: 16rem;
+  height: 11rem;
+  margin-left: 2%;
+}
+
+.select{
+  width: inherit;
+  height: inherit; 
+  border: 1px solid;
+  box-sizing: border-box;
+  margin-left: 0.3%;
+  font-size: 1.75rem;
+  background-color: #373e94;
+  color: white;
+  border-radius: 0.7rem;
+}
