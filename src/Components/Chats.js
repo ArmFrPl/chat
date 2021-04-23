@@ -1,62 +1,67 @@
-import React from 'react';
+import React, {useState} from 'react';
 
 import Carousel from './Carousel';
 import ChatCard from './ChatCard';
 
-export default class Chats extends React.Component {
+export default function Chats(props) {
 
-  state = {
-    inputText: '',
-    texts: [],
-  }
+  const [inputText, setInputText] = useState('');
+  const [texts, setTexts] = useState([]);
 
-  chatContainer = React.createRef();
+  const chatContainer = React.createRef();
 
-  scrollToMyRef = () => {
+  const scrollToMyRef = () => {
     const scroll =
-      this.chatContainer.current.scrollHeight -
-      this.chatContainer.current.clientHeight;
-    this.chatContainer.current.scrollTo(0, scroll);
+      chatContainer.current.scrollHeight -
+      chatContainer.current.clientHeight;
+      chatContainer.current.scrollTo(0, scroll);
   };
 
-  onSend = (e) => {
-    this.setState({texts: [...this.state.texts, this.state.inputText]}, () => this.scrollToMyRef())
-    this.setState({inputText: ''})
-  }
-
-  enterSend = (e) => {
-    console.log(e.key)
-    if(e.key === 'Enter'){
-      this.setState({texts: [...this.state.texts, this.state.inputText]}, () => this.scrollToMyRef())
-      this.setState({inputText: ''})
+  const onSend = (e) => {
+    if(texts.texts){
+      setTexts({texts: [...texts.texts, inputText]}, () => scrollToMyRef())
+      setInputText('');
+    }else{
+      setTexts({texts: [inputText]}, () => scrollToMyRef())
+      setInputText('');
     }
   }
 
-  changeText = (e) => {
-    this.setState({inputText: e.target.value})
+  const enterSend = (e) => {
+    console.log( texts)
+    if(e.key === 'Enter'){
+      if(texts.texts){
+        setTexts({texts: [...texts.texts, inputText]}, () => scrollToMyRef())
+        setInputText('');
+      }else{
+        setTexts({texts: [inputText]}, () => scrollToMyRef())
+        setInputText('');
+      }
+    }
   }
 
-  close = () => {
-    this.props.changeClosed({closed: false})
-    console.log(this.state)
+  const changeText = (e) => {
+    setInputText(e.target.value)
   }
 
-  open = () => {
-    this.props.changeClosed({closed: true})
+  const close = () => {
+    props.changeClosed({closed: false})
   }
 
-  onSelect = (name) => {
-    this.props.setChatName(name)
-    this.setState({texts: []})
+  const open = () => {
+    props.changeClosed({closed: true})
   }
 
-  render() {
-    return (
-      <div>
-        <Carousel onSelect={this.onSelect} open={this.open} />
-        {this.props.closed && <ChatCard isLoggedIn={this.props.isLoggedIn} name={this.props.chatName} closed={this.props.closed} close={this.close} onSend={this.onSend} changeText={this.changeText} texts={this.state.texts} inputText={this.state.inputText} chatContainer={this.chatContainer} enterSend={this.enterSend} />}
-        
-      </div>
-    )
+  const onSelect = (name) => {
+    props.setChatName(name)
+    setTexts([]);
   }
+
+  console.log(props.closed)
+  return (
+    <div>
+      <Carousel onSelect={onSelect} open={open} />
+      {props.closed.closed && <ChatCard isLoggedIn={props.isLoggedIn} name={props.chatName} closed={props.closed} close={close} onSend={onSend} changeText={changeText} texts={texts} inputText={inputText} chatContainer={chatContainer} enterSend={enterSend} />}
+    </div>
+  )
 }

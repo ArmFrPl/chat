@@ -3,27 +3,24 @@ import { Link } from 'react-router-dom';
 
 import '../Styles/SelectChat.css';
 
-export default class SelectChat extends React.Component {
+export default function SelectChat(props){
 
-  open = (e) => {
+  let open = (e) => {
     console.log(e.target.innerText)
-    this.props.setChatName(e.target.innerText);
-    this.props.open(true)
+    props.setChatName(e.target.innerText);
+    props.open(true)
   }
-
-  render(){
-    return(
-      <div className='cont'>
-          {
-            [...Array(6)].map((x, i) => { 
-              return (<Link className='cards' key={i} to='/chats'>
-                <button className="select" onClick={this.open}>
-                  Theme {i+1}
-                </button>
-              </Link>
-            )})
-          }
-      </div>
-    )
-  }
+  return(
+    <div className='cont'>
+        {
+          [...Array(6)].map((x, i) => { 
+            return (<Link className='cards' key={i} to='/chats'>
+              <button className="select" onClick={open}>
+                Theme {i+1}
+              </button>
+            </Link>
+          )})
+        }
+    </div>
+  )
 }
